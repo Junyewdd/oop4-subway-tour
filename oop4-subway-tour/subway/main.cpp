@@ -127,6 +127,8 @@ int main() {
     //도착역 설정
     cout << second<<" : ";
     cin >> end;
+    string finalend;
+    finalend = end;
     if (stationList[end].size() == 1) {
         end = end + '/' + stationList[end][0].getLine();
     }
@@ -265,7 +267,7 @@ int main() {
 
     vector<string> plans;
     if (optSubway == "1") {
-        name = end;
+        name = finalend;
     }
     else {
         name = minNode.getName();
@@ -275,9 +277,7 @@ int main() {
         cout << "최종 목적지에서의 볼거리를 원하시면 1번, 맛집을 원하시면 2번을 입력해주세요(끝내기 : 3번) : ";
         cin >> opt1;
         if (opt1 == 1) {
-        
             maindata[name].printPlaces();
-
             cout << "원하는 장소를 선택해주세요 : ";
             cin.ignore();
             getline(cin, findplace);
