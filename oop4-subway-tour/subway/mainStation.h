@@ -29,7 +29,7 @@ public:
         return restaurants;
     }
     void printPlaces() {
-        cout << "최종 목적지의 볼거리:" << endl;
+        cout << "Attractions at the final destination :" << endl;
         for (const auto& place : places) {
             vector<string> v1 = split(place, ',');
             for (const auto& item : v1) {

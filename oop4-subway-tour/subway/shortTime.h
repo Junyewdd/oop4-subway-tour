@@ -7,8 +7,8 @@ using namespace std;
 
 class ShortTime {
 private:
-    priority_queue<pair<double, string>>pq; // 시간, 이름
-    unordered_map<string, Station> previous; // 이전 역 저장
+    priority_queue<pair<double, string>>pq; // time, name
+    unordered_map<string, Station> previous; // store the previous station
     unordered_map<string, double>& d;
     unordered_map<string, Station>& stations;
 public:
@@ -20,11 +20,11 @@ public:
         pq.push({ 0, start });
 
         while (!pq.empty()) {
-            double time = -pq.top().first; //현재 노드까지의 비용
-            string keynow = pq.top().second; // 현재 노드
+            double time = -pq.top().first; //Costs to the current node
+            string keynow = pq.top().second; // current node
             pq.pop();
 
-            if (d[keynow] < time) // 이미 최단경로를 체크한 노드인 경우 패스
+            if (d[keynow] < time) // If the node has already checked the shortest path, pass
                 continue;
             for (int i = 0; i < stations[keynow].getNeighbor().size(); i++) {
                 double cost = time + stations[keynow].getNeighbor()[i].second.first;
@@ -39,9 +39,9 @@ public:
         }
     }
 
-    vector<Station> findRoute(string start, string end) //객체의 역 이름 넣기
+    vector<Station> findRoute(string start, string end) //Insert the station name of the object.
     {
-        //경로 추적
+        //trace the route
         vector<Station> route;
         for (Station station = stations[end]; (station.getName() + '/' + station.getLine()) != start; station = previous[station.getName() + '/' + station.getLine()]) {
             route.insert(route.begin(), station);

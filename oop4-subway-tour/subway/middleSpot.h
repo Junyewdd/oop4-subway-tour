@@ -13,18 +13,18 @@ double calcu;
 
 unordered_map<string, double> shortTime2(string start, unordered_map<string, double>& d, unordered_map<string, Station>& stations) //객체의 역 이름 넣기
 {
-    priority_queue<pair<double, string>>pq; // 시간, 이름
-    unordered_map<string, Station> previous; // 이전 역 저장
+    priority_queue<pair<double, string>>pq; // time, name
+    unordered_map<string, Station> previous; // store the previous station
 
-    pq.push({ 0,start }); //시작 -> 시작, 출발 id
+    pq.push({ 0,start }); //start -> start,  id of the depart
     d[start] = 0;
 
     while (!pq.empty()) {
-        double time = -pq.top().first; //현재 노드까지의 비용
-        string keynow = pq.top().second; // 현재 노드
+        double time = -pq.top().first; //Costs to the current node
+        string keynow = pq.top().second; // current node
         pq.pop();
 
-        if (d[keynow] < time) // 이미 최단경로를 체크한 노드인 경우 패스
+        if (d[keynow] < time) // If the node has already checked the shortest path, pass
             continue;
         for (int i = 0; i < stations[keynow].getNeighbor().size(); i++) {
             double cost = time + stations[keynow].getNeighbor()[i].second.first;

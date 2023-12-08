@@ -23,7 +23,7 @@ public:
     }
     void printDetail() {
         if (!name.empty()) {
-            cout <<"<"<<name << "> " << detail << endl;
+            cout << "<" << name << "> " << detail << endl;
         }
     }
     void setFoodMenu(string menus) {
@@ -41,7 +41,7 @@ public:
 
     void printFoodMenu() {
         for (pair<string, string> foodInfo : foodMenu) {
-            cout << "<"<<foodInfo.first << "> " << foodInfo.second << "¿ø" << endl;
+            cout << "<" << foodInfo.first << "> " << foodInfo.second << "Won" << endl;
         }
     }
 };
